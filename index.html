@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LUMINA | Cardiología Avanzada</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* Variables y Reseteo */
         :root {
             --primary-blue: #0A192F; 
             --secondary-blue: #112240;
@@ -15,117 +15,86 @@
             --text-main: #334155;
             --text-muted: #64748B;
         }
-        html { scroll-behavior: smooth; } /* Navegación suave */
+        html { scroll-behavior: smooth; }
         body {
-            font-family: 'Inter', sans-serif;
-            margin: 0; padding: 0;
-            color: var(--text-main);
-            background-color: var(--light-bg);
-            line-height: 1.6;
+            font-family: 'Inter', sans-serif; margin: 0; padding: 0;
+            color: var(--text-main); background-color: var(--light-bg); line-height: 1.6;
         }
         
-        /* Navegación (Sticky Header) */
         header {
-            background-color: rgba(255, 255, 255, 0.98);
-            padding: 15px 5%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            position: sticky;
-            top: 0; z-index: 1000;
-            box-shadow: 0 1px 10px rgba(0,0,0,0.05);
+            background-color: rgba(255, 255, 255, 0.98); padding: 15px 5%; display: flex;
+            justify-content: space-between; align-items: center; position: sticky;
+            top: 0; z-index: 1000; box-shadow: 0 1px 10px rgba(0,0,0,0.05);
         }
         .logo { font-size: 26px; font-weight: 700; color: var(--primary-blue); letter-spacing: 1.5px; }
         nav { display: flex; gap: 30px; align-items: center; }
         nav a { text-decoration: none; color: var(--primary-blue); font-weight: 500; transition: color 0.3s; }
         nav a:hover { color: var(--accent-gold); }
-        .btn-nav {
-            background-color: var(--primary-blue); color: white;
-            padding: 10px 24px; border-radius: 50px; font-weight: 600;
-        }
+        .btn-nav { background-color: var(--primary-blue); color: white; padding: 10px 24px; border-radius: 50px; font-weight: 600; }
         .btn-nav:hover { background-color: var(--accent-gold); color: white; }
 
-        /* Secciones Generales */
         section { padding: 100px 5%; max-width: 1200px; margin: 0 auto; }
         .section-title { font-size: 36px; color: var(--primary-blue); text-align: center; margin-bottom: 50px; }
         .section-title span { color: var(--accent-gold); }
 
-        /* Hero Section */
-        .hero {
-            background-color: var(--primary-blue); color: white;
-            padding: 140px 5%; text-align: center; max-width: 100%;
-        }
+        .hero { background-color: var(--primary-blue); color: white; padding: 140px 5%; text-align: center; max-width: 100%; }
         .hero h1 { font-size: 52px; font-weight: 300; margin-bottom: 20px; letter-spacing: -1px; }
         .hero b { font-weight: 700; color: var(--accent-gold); }
         .hero p { font-size: 20px; max-width: 650px; margin: 0 auto 40px auto; color: #94A3B8; font-weight: 300; }
 
-        /* Servicios Grid */
         .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; }
-        .card {
-            background: white; padding: 40px 30px; border-radius: 12px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.04);
-            transition: transform 0.3s, box-shadow 0.3s;
-            border-top: 4px solid transparent;
-        }
-        .card:hover { transform: translateY(-5px); box-shadow: 0 10px 30px rgba(0,0,0,0.08); border-top: 4px solid var(--accent-gold); }
+        .card { background: white; padding: 40px 30px; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.04); transition: transform 0.3s; border-top: 4px solid transparent; }
+        .card:hover { transform: translateY(-5px); border-top: 4px solid var(--accent-gold); }
         .card h3 { color: var(--primary-blue); font-size: 22px; margin-top: 0; }
 
-        /* LUMINA Educa (Blog) */
-        .blog-card {
-            background: white; border-radius: 12px; overflow: hidden;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.04);
-        }
-        .blog-img { background-color: var(--secondary-blue); height: 200px; width: 100%; } /* Placeholder para imagen */
+        .blog-card { background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.04); }
+        .blog-img { background-color: var(--secondary-blue); height: 200px; width: 100%; }
         .blog-content { padding: 30px; }
         .blog-tag { color: var(--accent-gold); font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; }
         .blog-title { color: var(--primary-blue); font-size: 20px; font-weight: 600; margin: 10px 0; }
         .read-more { color: var(--primary-blue); font-weight: 600; text-decoration: none; border-bottom: 2px solid var(--accent-gold); padding-bottom: 2px;}
 
-        /* Contacto Premium */
-        .contact-wrapper {
-            background: white; border-radius: 16px; padding: 60px;
-            display: grid; grid-template-columns: 1fr 1fr; gap: 60px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.05);
-        }
+        .contact-wrapper { background: white; border-radius: 16px; padding: 60px; display: grid; grid-template-columns: 1fr 1fr; gap: 60px; box-shadow: 0 10px 40px rgba(0,0,0,0.05); }
         .contact-info h3 { color: var(--primary-blue); font-size: 28px; }
         .contact-info p { font-size: 18px; color: var(--text-muted); margin-bottom: 10px; }
+        
+        /* Estilos para botones de Redes Sociales */
+        .social-links { margin-top: 30px; display: flex; gap: 15px; }
+        .social-btn {
+            display: inline-flex; align-items: center; justify-content: center;
+            width: 45px; height: 45px; border-radius: 50%;
+            background-color: var(--light-bg); color: var(--primary-blue);
+            font-size: 20px; text-decoration: none; transition: 0.3s;
+        }
+        .social-btn:hover { background-color: var(--accent-gold); color: white; transform: translateY(-3px); }
+
         .form-group { margin-bottom: 20px; }
-        .form-group input, .form-group textarea {
-            width: 100%; padding: 15px; border: 1px solid #E2E8F0; border-radius: 8px;
-            font-family: 'Inter', sans-serif; box-sizing: border-box;
-        }
-        .btn-submit {
-            background-color: var(--primary-blue); color: white; border: none;
-            padding: 15px 30px; border-radius: 8px; font-weight: 600; width: 100%; cursor: pointer; transition: background 0.3s;
-        }
+        .form-group input, .form-group textarea { width: 100%; padding: 15px; border: 1px solid #E2E8F0; border-radius: 8px; font-family: 'Inter', sans-serif; box-sizing: border-box; }
+        .btn-submit { background-color: var(--primary-blue); color: white; border: none; padding: 15px 30px; border-radius: 8px; font-weight: 600; width: 100%; cursor: pointer; transition: background 0.3s; }
         .btn-submit:hover { background-color: var(--accent-gold); }
 
-        /* WhatsApp y Footer */
+        /* Estilo WhatsApp Auténtico */
         .whatsapp-float {
             position: fixed; width: 60px; height: 60px; bottom: 40px; right: 40px;
-            background-color: #25d366; color: #FFF; border-radius: 50px;
-            text-align: center; font-size: 30px; display: flex; align-items: center; justify-content: center;
+            background-color: #25D366; color: #FFF; border-radius: 50px;
+            text-align: center; font-size: 35px; display: flex; align-items: center; justify-content: center;
             box-shadow: 0px 4px 15px rgba(37, 211, 102, 0.4); z-index: 1000; text-decoration: none; transition: transform 0.3s;
         }
-        .whatsapp-float:hover { transform: scale(1.1); }
+        .whatsapp-float:hover { transform: scale(1.1); background-color: #20BA56; }
+        
         footer { background: #050C17; color: #64748B; text-align: center; padding: 40px 20px; font-size: 14px; }
-
-        @media (max-width: 768px) {
-            nav { display: none; } /* En móvil el menú requiere un botón 'hamburguesa' que añadiremos después */
-            .contact-wrapper { grid-template-columns: 1fr; padding: 30px; }
-            .hero h1 { font-size: 40px; }
-        }
     </style>
 </head>
 <body>
 
     <header>
-        <div class="logo">LUMINA | Cardiología Avanzada</div>
+        <div class="logo">LUMINA</div>
         <nav>
-            <a href="index.html#inicio">Inicio</a>
-            <a href="estudios.html">Estudios Diagnósticos</a> <a href="index.html#servicios">Servicios</a>
-            <a href="index.html#educa">LUMINA Educa</a>
-            <a href="index.html#contacto" class="btn-nav">Agendar Cita</a>
+            <a href="#inicio">Inicio</a>
+            <a href="estudios.html">Estudios Diagnósticos</a>
+            <a href="#servicios">Servicios</a>
+            <a href="#educa">LUMINA Educa</a>
+            <a href="https://wa.me/51999999999?text=Hola%20LUMINA,%20deseo%20agendar%20una%20cita%20médica." target="_blank" class="btn-nav">Agendar Cita</a>
         </nav>
     </header>
 
@@ -161,7 +130,7 @@
                     <div class="blog-content">
                         <span class="blog-tag">Innovación</span>
                         <h3 class="blog-title">El futuro del diagnóstico: Biomarcadores vocales</h3>
-                        <p style="color: var(--text-muted); font-size: 14px;">Descubra cómo el análisis de la voz asistido por IA está abriendo nuevas fronteras en la detección temprana.</p>
+                        <p style="color: var(--text-muted); font-size: 14px;">Descubra cómo el análisis de la voz asistido por IA está abriendo nuevas fronteras.</p>
                         <a href="#" class="read-more">Leer Artículo →</a>
                     </div>
                 </div>
@@ -170,7 +139,7 @@
                     <div class="blog-content">
                         <span class="blog-tag">Arritmias</span>
                         <h3 class="blog-title">Comprendiendo las Taquicardias Supraventriculares</h3>
-                        <p style="color: var(--text-muted); font-size: 14px;">Mecanismos, síntomas de alerta y por qué un diagnóstico preciso marca la diferencia en el tratamiento.</p>
+                        <p style="color: var(--text-muted); font-size: 14px;">Mecanismos, síntomas de alerta y por qué un diagnóstico preciso marca la diferencia.</p>
                         <a href="articulo-arritmias.html" class="read-more">Leer Artículo →</a>
                     </div>
                 </div>
@@ -179,7 +148,7 @@
                     <div class="blog-content">
                         <span class="blog-tag">Prevención</span>
                         <h3 class="blog-title">Riesgo Quirúrgico: Más allá del protocolo</h3>
-                        <p style="color: var(--text-muted); font-size: 14px;">Una evaluación preoperatoria detallada es fundamental para garantizar su seguridad integral.</p>
+                        <p style="color: var(--text-muted); font-size: 14px;">Una evaluación preoperatoria detallada es fundamental para garantizar su seguridad.</p>
                         <a href="#" class="read-more">Leer Artículo →</a>
                     </div>
                 </div>
@@ -194,15 +163,18 @@
                 <h3>Consultorio LUMINA</h3>
                 <p><b>Ubicación:</b> San Isidro, Lima, Perú.</p>
                 <p><b>Atención:</b> Presencial y Teleconsulta.</p>
-                <p style="margin-top: 30px; color: var(--text-muted); font-size: 15px;">Complete el formulario para solicitar disponibilidad o utilice nuestro canal directo de WhatsApp para asistencia inmediata.</p>
+                <p style="margin-top: 20px; color: var(--text-muted); font-size: 15px;">Síganos en nuestras redes para consejos de salud cardiovascular y novedades sobre nuestros servicios de innovación médica.</p>
+                
+                <div class="social-links">
+                    <a href="https://facebook.com/TuPaginaLumina" target="_blank" class="social-btn"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://instagram.com/TuPaginaLumina" target="_blank" class="social-btn"><i class="fab fa-instagram"></i></a>
+                </div>
             </div>
             <div>
                 <form>
                     <div class="form-group"><input type="text" placeholder="Nombre completo" required></div>
                     <div class="form-group"><input type="tel" placeholder="Número de celular" required></div>
-                    <div class="form-group">
-                        <textarea rows="4" placeholder="¿En qué podemos ayudarle? (Opcional)"></textarea>
-                    </div>
+                    <div class="form-group"><textarea rows="4" placeholder="¿En qué podemos ayudarle? (Opcional)"></textarea></div>
                     <button type="submit" class="btn-submit">Solicitar Información</button>
                 </form>
             </div>
@@ -213,7 +185,9 @@
         <p>© 2026 LUMINA Cardiología. San Isidro, Lima. Todos los derechos reservados.</p>
     </footer>
 
-    <a href="https://wa.me/51999999999" target="_blank" class="whatsapp-float"><b>W</b></a>
+    <a href="https://wa.me/51999999999?text=Hola%20LUMINA,%20quisiera%20solicitar%20información%20sobre%20sus%20servicios." target="_blank" class="whatsapp-float">
+        <i class="fab fa-whatsapp"></i>
+    </a>
 
 </body>
 </html>
